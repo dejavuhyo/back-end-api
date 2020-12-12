@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.backend.mapper.PatientMapper">
+
+    <select id="totalPatientCnt" resultType="com.example.backend.vo.TotalVO">
+        select distinct
+            count(person_id) as totalPatientCnt
+        from
+            person
+    </select>
+
+    <select id="genderPatientCnt" resultType="com.example.backend.vo.TotalVO">
+        select
+            count(case when gender_concept_id='8507' then 1 end) as maleCnt
+            , count(case when gender_concept_id='8532' then 1 end) as femaleCnt
+        from
+            person
+    </select>
+
+    <select id="racePatientCnt" resultType="com.example.backend.vo.TotalVO">
+        select
+            count(case when race_concept_id='8515' then 1 end) as asianPatientCnt
+            , count(case when race_concept_id='8516' then 1 end) as blackPatientCnt
+            , count(case when race_concept_id='8527' then 1 end) as whitePatientCnt
+            , count(case when race_concept_id='native' then 1 end) as nativePatientCnt
+            , count(case when race_concept_id='other' then 1 end) as otherPatientCnt
+        from
+            person
+    </select>
+
+    <select id="ethnicityPatientCnt" resultType="com.example.backend.vo.TotalVO">
+        select
+            count(case when ethnicity_source_value='hispanic' then 1 end) as hispanicPatientCnt
+            , count(case when ethnicity_source_value='nonhispanic' then 1 end) as nonhispanicPatientCnt
+        from
+            person
+    </select>
+
+    <select id="deathPatientCnt" resultType="com.example.backend.vo.TotalVO">
+        select
+            count(*) as deathPatientCnt
+        from
+            death a
+        left outer join death b
+        on a.person_id = b.person_id
+    </select>
+
+
+</mapper>

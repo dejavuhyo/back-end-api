@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.backend.mapper.ConceptMapper">
+
+    <select id="getConceptIdInfo" resultType="com.example.backend.vo.ConceptVO">
+        <choose>
+            <when test="'concept' == searchCnd">
+                select
+                    concept_id as concept_id
+                from
+                    concept
+                where
+                    concept_id like '%${searchKwd}%'
+                order by concept_id asc
+                limit #{viewCnt} offset (#{pageCnt} - 1) * 10
+            </when>
+            <when test="'condition' == searchCnd">
+                select
+                    condition_concept_id as concept_id
+                from
+                    condition_occurrence
+                where
+                    condition_concept_id like '%${searchKwd}%'
+                order by condition_occurrence_id asc
+                limit #{viewCnt} offset (#{pageCnt} - 1) * 10
+            </when>
+            <when test="'death' == searchCnd">
+                select
+                    cause_concept_id as concept_id
+                from
+                    death
+                where
+                    cause_concept_id like '%${searchKwd}%'
+                order by person_id asc
+                limit #{viewCnt} offset (#{pageCnt} - 1) * 10
+            </when>
+            <when test="'drug' == searchCnd">
+                select
+                    drug_concept_id as concept_id
+                from
+                    drug_exposure
+                where
+                    drug_concept_id like '%${searchKwd}%'
+                order by drug_exposure_id asc
+                limit #{viewCnt} offset (#{pageCnt} - 1) * 10
+            </when>
+            <when test="'person' == searchCnd">
+                select
+                    gender_concept_id as concept_id
+                from
+                    person
+                where
+                    gender_concept_id like '%${searchKwd}%'
+                order by person_id asc
+                limit #{viewCnt} offset (#{pageCnt} - 1) * 10
+            </when>
+            <when test="'visit' == searchCnd">
+                select
+                    visit_concept_id as concept_id
+                from
+                    visit_occurrence
+                where
+                    visit_concept_id like '%${searchKwd}%'
+                order by visit_occurrence_id asc
+                limit #{viewCnt} offset (#{pageCnt} - 1) * 10
+            </when>
+            <otherwise></otherwise>
+        </choose>
+    </select>
+
+</mapper>

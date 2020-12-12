@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.backend.mapper.VisitMapper">
+
+    <select id="conceptVisitCnt" resultType="com.example.backend.vo.VisitVO">
+        select
+            count(case when visit_concept_id='9201' then 1 end) as inpatientVisit
+            , count(case when visit_concept_id='9202' then 1 end) as outpatientVisit
+            , count(case when visit_concept_id='9203' then 1 end) as emergencyRoomVisit
+        from
+            visit_occurrence
+    </select>
+
+    <select id="genderVisitCnt" resultType="com.example.backend.vo.VisitVO">
+        select
+            count(case when b.gender_concept_id='8507' then 1 end) as maleVisitCnt
+            , count(case when b.gender_concept_id='8532' then 1 end) as femaleVisitCnt
+        from
+            visit_occurrence a
+        left outer join person b
+        on a.person_id = b.person_id
+    </select>
+
+    <select id="raceVisitCnt" resultType="com.example.backend.vo.VisitVO">
+        select
+            count(case when b.race_concept_id='8515' then 1 end) as asianVisitCnt
+            , count(case when b.race_concept_id='8516' then 1 end) as blackVisitCnt
+            , count(case when b.race_concept_id='8527' then 1 end) as whiteVisitCnt
+            , count(case when b.race_concept_id='native' then 1 end) as nativeVisitCnt
+            , count(case when b.race_concept_id='other' then 1 end) as otherVisitCnt
+        from
+            visit_occurrence a
+        left outer join person b
+        on a.person_id = b.person_id
+    </select>
+
+    <select id="ethnicityVisitCnt" resultType="com.example.backend.vo.VisitVO">
+        select
+            count(case when b.ethnicity_source_value='hispanic' then 1 end) as hispanicVisitCnt
+            , count(case when b.ethnicity_source_value='nonhispanic' then 1 end) as nonhispanicVisitCnt
+        from
+            visit_occurrence a
+        left outer join person b
+        on a.person_id = b.person_id
+    </select>
+
+    <select id="ageVisitCnt" resultType="com.example.backend.vo.VisitVO">
+        select
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now())  then 1 end) as years00,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '1 decades') then 1 end) as years10,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '2 decades') then 1 end) as years20,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '3 decades') then 1 end) as years30,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '4 decades') then 1 end) as years40,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '5 decades') then 1 end) as years50,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '6 decades') then 1 end) as years60,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '7 decades') then 1 end) as years70,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '8 decades') then 1 end) as years80,
+            count(case when date_trunc('decade', to_date(b.birth_datetime, 'yyyy-mm-dd hh24:mi:ss.ms')) = date_trunc('decade', now() - interval '9 decades') then 1 end) as years90
+        from
+            visit_occurrence a
+        left outer join person b
+        on a.person_id = b.person_id
+    </select>
+
+</mapper>
