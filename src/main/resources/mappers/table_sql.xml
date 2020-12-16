@@ -20,7 +20,7 @@
         where
             (concept_id like '%${searchKwd}%' or concept_name like '%${searchKwd}%')
         order by concept_id asc
-        limit #{viewCnt} offset (#{pageCnt} - 1) * 10
+        limit #{viewCnt} offset (#{pageCnt} - 1) * #{viewCnt}
     </select>
 
 </mapper>
