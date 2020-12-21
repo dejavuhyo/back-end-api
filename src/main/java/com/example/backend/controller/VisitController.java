@@ -1,12 +1,11 @@
 package com.example.backend.controller;
 
 import com.example.backend.service.VisitService;
-import com.example.backend.vo.*;
+import com.example.backend.vo.VisitVO;
 import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,8 +21,7 @@ public class VisitController {
      * @return
      */
     @GetMapping(value = "/getVisitCnt")
-    public @ResponseBody
-    String getVisitCnt(VisitVO visitVO, @RequestParam("cntType") String cntType) {
+    public String getVisitCnt(VisitVO visitVO, @RequestParam("cntType") String cntType) {
 
         JsonObject obj = new JsonObject();
         JsonObject data = new JsonObject();
