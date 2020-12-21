@@ -13,7 +13,7 @@
                 where
                     concept_id like '%${searchKwd}%'
                 order by concept_id asc
-                limit #{viewCnt} offset (#{pageCnt} - 1) * #{viewCnt}
+                limit #{viewCnt} offset (#{pageNum} - 1) * #{viewCnt}
             </when>
             <when test="'condition' == searchCnd">
                 select
@@ -23,7 +23,7 @@
                 where
                     condition_concept_id like '%${searchKwd}%'
                 order by condition_occurrence_id asc
-                limit #{viewCnt} offset (#{pageCnt} - 1) * #{viewCnt}
+                limit #{viewCnt} offset (#{pageNum} - 1) * #{viewCnt}
             </when>
             <when test="'death' == searchCnd">
                 select
@@ -33,7 +33,7 @@
                 where
                     cause_concept_id like '%${searchKwd}%'
                 order by person_id asc
-                limit #{viewCnt} offset (#{pageCnt} - 1) * #{viewCnt}
+                limit #{viewCnt} offset (#{pageNum} - 1) * #{viewCnt}
             </when>
             <when test="'drug' == searchCnd">
                 select
@@ -43,7 +43,7 @@
                 where
                     drug_concept_id like '%${searchKwd}%'
                 order by drug_exposure_id asc
-                limit #{viewCnt} offset (#{pageCnt} - 1) * #{viewCnt}
+                limit #{viewCnt} offset (#{pageNum} - 1) * #{viewCnt}
             </when>
             <when test="'person' == searchCnd">
                 select
@@ -53,7 +53,7 @@
                 where
                     gender_concept_id like '%${searchKwd}%'
                 order by person_id asc
-                limit #{viewCnt} offset (#{pageCnt} - 1) * #{viewCnt}
+                limit #{viewCnt} offset (#{pageNum} - 1) * #{viewCnt}
             </when>
             <when test="'visit' == searchCnd">
                 select
@@ -63,7 +63,7 @@
                 where
                     visit_concept_id like '%${searchKwd}%'
                 order by visit_occurrence_id asc
-                limit #{viewCnt} offset (#{pageCnt} - 1) * #{viewCnt}
+                limit #{viewCnt} offset (#{pageNum} - 1) * #{viewCnt}
             </when>
             <otherwise></otherwise>
         </choose>
