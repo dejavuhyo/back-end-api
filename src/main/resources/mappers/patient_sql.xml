@@ -3,14 +3,14 @@
 
 <mapper namespace="com.example.backend.mapper.PatientMapper">
 
-    <select id="totalPatientCnt" resultType="com.example.backend.vo.TotalVO">
+    <select id="totalPatientCnt" resultType="com.example.backend.vo.PatientVO">
         select distinct
             count(person_id) as totalPatientCnt
         from
             person
     </select>
 
-    <select id="genderPatientCnt" resultType="com.example.backend.vo.TotalVO">
+    <select id="genderPatientCnt" resultType="com.example.backend.vo.PatientVO">
         select
             count(case when gender_concept_id='8507' then 1 end) as maleCnt
             , count(case when gender_concept_id='8532' then 1 end) as femaleCnt
@@ -18,7 +18,7 @@
             person
     </select>
 
-    <select id="racePatientCnt" resultType="com.example.backend.vo.TotalVO">
+    <select id="racePatientCnt" resultType="com.example.backend.vo.PatientVO">
         select
             count(case when race_concept_id='8515' then 1 end) as asianPatientCnt
             , count(case when race_concept_id='8516' then 1 end) as blackPatientCnt
@@ -29,7 +29,7 @@
             person
     </select>
 
-    <select id="ethnicityPatientCnt" resultType="com.example.backend.vo.TotalVO">
+    <select id="ethnicityPatientCnt" resultType="com.example.backend.vo.PatientVO">
         select
             count(case when ethnicity_source_value='hispanic' then 1 end) as hispanicPatientCnt
             , count(case when ethnicity_source_value='nonhispanic' then 1 end) as nonhispanicPatientCnt
@@ -37,7 +37,7 @@
             person
     </select>
 
-    <select id="deathPatientCnt" resultType="com.example.backend.vo.TotalVO">
+    <select id="deathPatientCnt" resultType="com.example.backend.vo.PatientVO">
         select
             count(*) as deathPatientCnt
         from
