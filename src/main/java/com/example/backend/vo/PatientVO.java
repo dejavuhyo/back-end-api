@@ -1,8 +1,6 @@
 package com.example.backend.vo;
 
-import com.google.gson.JsonElement;
-
-public class TotalVO {
+public class PatientVO {
 
     private String totalPatientCnt;
 
