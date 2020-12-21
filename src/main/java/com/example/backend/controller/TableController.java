@@ -7,7 +7,6 @@ import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,21 +22,20 @@ public class TableController {
      * @param tableVO
      * @param searchKwd
      * @param viewCnt
-     * @param pageCnt
+     * @param pageNum
      * @return
      */
     @GetMapping(value = "/getTableVal")
-    public @ResponseBody
-    String getTableVal(TableVO tableVO, @RequestParam("searchKwd") String searchKwd, @RequestParam("viewCnt") int viewCnt, @RequestParam("pageCnt") int pageCnt) {
+    public String getTableVal(TableVO tableVO, @RequestParam("searchKwd") String searchKwd, @RequestParam("viewCnt") int viewCnt, @RequestParam("pageNum") int pageNum) {
 
         tableVO.setSearchKwd(searchKwd);
         tableVO.setViewCnt(viewCnt);
-        tableVO.setPageCnt(pageCnt);
+        tableVO.setPageNum(pageNum);
+
+        List<TableVO> tableValList = tableService.getTableVal(tableVO);
 
         JsonObject obj = new JsonObject();
         obj.addProperty("title", "테이블의 값");
-
-        List<TableVO> tableValList = tableService.getTableVal(tableVO);
 
         JsonArray list = new JsonArray();
         for (TableVO vo : tableValList) {
