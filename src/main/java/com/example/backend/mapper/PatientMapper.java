@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PatientMapper {
 
-    TotalVO totalPatientCnt(TotalVO totalVO);
+    PatientVO totalPatientCnt(PatientVO patientVO);
 
-    TotalVO genderPatientCnt(TotalVO totalVO);
+    PatientVO genderPatientCnt(PatientVO patientVO);
 
-    TotalVO racePatientCnt(TotalVO totalVO);
+    PatientVO racePatientCnt(PatientVO patientVO);
 
-    TotalVO ethnicityPatientCnt(TotalVO totalVO);
+    PatientVO ethnicityPatientCnt(PatientVO patientVO);
 
-    TotalVO deathPatientCnt(TotalVO totalVO);
+    PatientVO deathPatientCnt(PatientVO patientVO);
 }

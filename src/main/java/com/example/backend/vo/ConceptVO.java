@@ -5,7 +5,7 @@ public class ConceptVO {
     private String searchKwd;
     private String searchCnd;
     private int viewCnt;
-    private int pageCnt;
+    private int pageNum;
 
     private String conceptId;
 
@@ -33,12 +33,12 @@ public class ConceptVO {
         this.viewCnt = viewCnt;
     }
 
-    public int getPageCnt() {
-        return pageCnt;
+    public int getPageNum() {
+        return pageNum;
     }
 
-    public void setPageCnt(int pageCnt) {
-        this.pageCnt = pageCnt;
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 
     public String getConceptId() {

@@ -5,22 +5,13 @@
 
     <select id="getTableVal" resultType="com.example.backend.vo.TableVO">
         select
-            concept_id
-            , concept_name
-            , domain_id
-            , vocabulary_id
-            , concept_class_id
-            , standard_concept
-            , concept_code
-            , valid_start_date
-            , valid_end_date
-            , invalid_reason
+            *
         from
-            concept
+            customer
         where
-            (concept_id like '%${searchKwd}%' or concept_name like '%${searchKwd}%')
-        order by concept_id asc
-        limit #{viewCnt} offset (#{pageCnt} - 1) * #{viewCnt}
+            (company like '%${searchKwd}%')
+        order by customer_id asc
+        limit #{viewCnt} offset (#{pageNum} - 1) * #{viewCnt}
     </select>
 
 </mapper>

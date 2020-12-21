@@ -4,7 +4,7 @@ public class TableVO {
 
     private String searchKwd;
     private int viewCnt;
-    private int pageCnt;
+    private int pageNum;
 
     private String conceptId;
     private String conceptName;
@@ -33,12 +33,12 @@ public class TableVO {
         this.viewCnt = viewCnt;
     }
 
-    public int getPageCnt() {
-        return pageCnt;
+    public int getPageNum() {
+        return pageNum;
     }
 
-    public void setPageCnt(int pageCnt) {
-        this.pageCnt = pageCnt;
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 
     public String getConceptId() {

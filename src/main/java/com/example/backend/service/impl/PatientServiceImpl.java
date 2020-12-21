@@ -14,28 +14,28 @@ public class PatientServiceImpl implements PatientService {
     PatientMapper statisticsMapper;
 
     @Override
-    public TotalVO totalPatientCnt(TotalVO totalVO) {
-        return statisticsMapper.totalPatientCnt(totalVO);
+    public PatientVO totalPatientCnt(PatientVO patientVO) {
+        return statisticsMapper.totalPatientCnt(patientVO);
     }
 
     @Override
-    public TotalVO genderPatientCnt(TotalVO totalVO) {
-        return statisticsMapper.genderPatientCnt(totalVO);
+    public PatientVO genderPatientCnt(PatientVO patientVO) {
+        return statisticsMapper.genderPatientCnt(patientVO);
     }
 
     @Override
-    public TotalVO racePatientCnt(TotalVO totalVO) {
-        return statisticsMapper.racePatientCnt(totalVO);
+    public PatientVO racePatientCnt(PatientVO patientVO) {
+        return statisticsMapper.racePatientCnt(patientVO);
     }
 
     @Override
-    public TotalVO ethnicityPatientCnt(TotalVO totalVO) {
-        return statisticsMapper.ethnicityPatientCnt(totalVO);
+    public PatientVO ethnicityPatientCnt(PatientVO patientVO) {
+        return statisticsMapper.ethnicityPatientCnt(patientVO);
     }
 
     @Override
-    public TotalVO deathPatientCnt(TotalVO totalVO) {
-        return statisticsMapper.deathPatientCnt(totalVO);
+    public PatientVO deathPatientCnt(PatientVO patientVO) {
+        return statisticsMapper.deathPatientCnt(patientVO);
     }
 
 }
