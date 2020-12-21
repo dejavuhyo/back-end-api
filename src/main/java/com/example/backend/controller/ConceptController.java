@@ -7,7 +7,6 @@ import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,12 +23,11 @@ public class ConceptController {
      * @param searchKwd
      * @param searchCnd
      * @param viewCnt
-     * @param pageCnt
+     * @param pageNum
      * @return
      */
     @GetMapping(value = "/getConceptIdInfo")
-    public @ResponseBody
-    String getConceptIdInfo(ConceptVO conceptVO, @RequestParam("searchKwd") String searchKwd, @RequestParam("searchCnd") String searchCnd, @RequestParam("viewCnt") int viewCnt, @RequestParam("pageCnt") int pageCnt) {
+    public String getConceptIdInfo(ConceptVO conceptVO, @RequestParam("searchKwd") String searchKwd, @RequestParam("searchCnd") String searchCnd, @RequestParam("viewCnt") int viewCnt, @RequestParam("pageNum") int pageNum) {
 
         conceptVO.setSearchKwd(searchKwd);
         // concept
@@ -40,7 +38,7 @@ public class ConceptController {
         // visit
         conceptVO.setSearchCnd(searchCnd);
         conceptVO.setViewCnt(viewCnt);
-        conceptVO.setPageCnt(pageCnt);
+        conceptVO.setPageNum(pageNum);
 
         JsonObject obj = new JsonObject();
         obj.addProperty("title", "concept_id 정보");
