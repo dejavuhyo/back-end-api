@@ -1,4 +1,4 @@
-# back-end
+# back-end-rest-api
 
 ## 1. 개발환경
 
@@ -61,8 +61,7 @@
 
 * http://localhost:8080/getTableVal?searchKwd=capsule&viewCnt=10&pageCnt=1
 
-## 4. DB 튜닝
+## 4. DB 설정
 
 * PK, FK 설정
 
-* text 검색을 위해 pg_trgm을 활용하였지만, 만족할 만한 속도가 나오지 않았음
