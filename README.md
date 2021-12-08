@@ -1,4 +1,4 @@
-# back-end-rest-api
+# back-end-api
 
 ## 1. 개발환경
 
