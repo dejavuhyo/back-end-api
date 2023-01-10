@@ -1,4 +1,4 @@
-# back-end-api
+# Spring Boot Back-end API
 
 ## 1. 개발환경
 
